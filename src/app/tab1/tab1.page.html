@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Livros
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-searchbar placeholder="Filter Schedules" (ionInput)="filterBooks($event)"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let item of arrayBooks" (click)="selectBook(item)">
+      {{ item.name }}
+    </ion-item>
+  </ion-list>
+
+</ion-content>
