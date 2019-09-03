@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ title }} {{ chapter }}</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button color="secondary">
+        <ion-icon slot="icon-only" name="more"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #popoverContent padding class="popover-page">
+  <div #popoverText class="text-to-change">
+    <div class="content" *ngFor="let item of content.verses">
+      <span>{{ item.number }}</span> {{ item.text }}
+    </div>
+  </div>
+</ion-content>

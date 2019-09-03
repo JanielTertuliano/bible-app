@@ -34,7 +34,7 @@ export class Tab2Page {
     }
   }
 
-  getReading(chapter) {
+  selectChapter(chapter) {
     this.router.navigate(['/tabs/tab3'], { queryParams: { abbrev: this.abbrev, chapter, title: this.title } });
   }
 

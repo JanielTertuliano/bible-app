@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BibleapiService } from 'src/providers/bibleapi.service';
 
 @Component({
@@ -13,7 +13,10 @@ export class Tab3Page {
   arrayVerses = [];
   contant: any;
 
-  constructor(private bibleApi: BibleapiService, private activatedRoute: ActivatedRoute) {
+  constructor(
+    private bibleApi: BibleapiService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router) {
     this.activatedRoute.queryParams.subscribe(params => {
       if (Object.entries(params).length === 0 && params.constructor === Object) {
         console.log('---');
@@ -28,6 +31,7 @@ export class Tab3Page {
   getReading(abbrev, chapter) {
     this.bibleApi.getReading('nvi', abbrev, chapter).subscribe(data => {
       this.contant = data;
+      localStorage.setItem('content', JSON.stringify(this.contant));
       this.countVerses(this.contant.chapter.verses);
     }, err => {
       console.log(err);
@@ -41,4 +45,7 @@ export class Tab3Page {
     }
   }
 
+  selectVerse(verse) {
+    this.router.navigate(['/read', verse] );
+  }
 }
