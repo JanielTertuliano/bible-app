@@ -5,7 +5,7 @@
     </ion-buttons>
     <ion-title>{{ title }} {{ chapter }}</ion-title>
     <ion-buttons slot="primary">
-      <ion-button color="secondary">
+      <ion-button color="secondary" (click)="presentPopover()">
         <ion-icon slot="icon-only" name="more"></ion-icon>
       </ion-button>
     </ion-buttons>

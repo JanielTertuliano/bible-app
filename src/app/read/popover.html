@@ -1,0 +1,68 @@
+<div>
+    <ion-list>
+        <div class="font-container">
+            <ion-button class="font-button" fill="clear" (click)="changeFontSize('smaller')">-A</ion-button>
+            <ion-button class="font-button" fill="clear" (click)="changeFontSize('larger')">+A</ion-button>
+        </div>
+
+        <ion-row class="row-dots">
+            <ion-col>
+                <div (click)="changeBackground('white')" class="dot dot-white" [class.selected]="background == 'white'">
+                </div>
+            </ion-col>
+            <ion-col>
+                <div (click)="changeBackground('tan')" class="dot dot-tan" [class.selected]="background == 'tan'"></div>
+            </ion-col>
+            <ion-col>
+                <div (click)="changeBackground('grey')" class="dot dot-grey" [class.selected]="background == 'grey'">
+                </div>
+            </ion-col>
+            <ion-col>
+                <div (click)="changeBackground('black')" class="dot dot-black" [class.selected]="background == 'black'">
+                </div>
+            </ion-col>
+        </ion-row>
+
+        <ion-radio-group>
+            <ion-list-header>
+                <ion-label>Fontes</ion-label>
+            </ion-list-header>
+
+            <ion-item class="text-athelas">
+                <ion-label>Athelas</ion-label>
+                <ion-radio value="Athelas"></ion-radio>
+            </ion-item>
+
+            <ion-item class="text-charter">
+                <ion-label>Charter</ion-label>
+                <ion-radio value="Charter"></ion-radio>
+            </ion-item>
+
+            <ion-item class="text-iowan">
+                <ion-label>Iowan</ion-label>
+                <ion-radio value="Iowan"></ion-radio>
+            </ion-item>
+
+            <ion-item class="text-palatino">
+                <ion-label>Palatino</ion-label>
+                <ion-radio value="Palatino"></ion-radio>
+            </ion-item>
+
+            <ion-item class="text-san-francisco">
+                <ion-label>San Francisco</ion-label>
+                <ion-radio value="San Francisco"></ion-radio>
+            </ion-item>
+
+            <ion-item class="text-seravek">
+                <ion-label>Seravek</ion-label>
+                <ion-radio value="Seravek"></ion-radio>
+            </ion-item>
+
+            <ion-item class="text-times-new-roman">
+                <ion-label>Times New Roman</ion-label>
+                <ion-radio value="Times New Roman"></ion-radio>
+            </ion-item>
+
+        </ion-radio-group>
+    </ion-list>
+</div>

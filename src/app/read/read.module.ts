@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ReadPage } from './read.page';
+import { ReadPage, PopoverComponent } from './read.page';
 
 const routes: Routes = [
   {
@@ -21,7 +21,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ReadPage],
-  entryComponents: []
+  declarations: [ReadPage, PopoverComponent],
+  entryComponents: [ReadPage, PopoverComponent]
 })
 export class ReadPageModule {}
