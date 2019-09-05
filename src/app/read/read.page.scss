@@ -4,11 +4,21 @@
 .content {
   color: var(--ion-color-dark-tint);
   padding: 5px;
-  font-size: 18px;
+  font-size: smaller;
 }
 .content span {
   font-size: 13px;
   color: var(--ion-color-medium-shade);
+}
+
+.font-container {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.font-button {
+  font-size: 20px;
+  color: black;
 }
 
 .text-smaller,
@@ -28,7 +38,6 @@ ion-col {
   min-height: 20px;
   line-height: 18px;
 }
-
 
 .text-button .item-inner {
   padding-right: 0;
@@ -57,19 +66,19 @@ ion-col {
 }
 
 .dot-white {
-  background-color: rgb(255,255,255);
+  background-color: rgb(255, 255, 255);
 }
 
 .dot-tan {
-  background-color: rgb(249,241,228);
+  background-color: rgb(249, 241, 228);
 }
 
 .dot-grey {
-  background-color: rgb(76,75,80);
+  background-color: rgb(76, 75, 80);
 }
 
 .dot-black {
-  background-color: rgb(0,0,0);
+  background-color: rgb(0, 0, 0);
 }
 
 .dot.selected {
@@ -77,44 +86,26 @@ ion-col {
   border-color: #327eff;
 }
 
-.text-athelas {
-  font-family: "Athelas";
+.text-arial ion-label {
+  font-family: "Arial";
 }
 
-.text-charter {
-  font-family: "Charter";
+.text-verdana ion-label {
+  font-family: "Verdana";
 }
 
-.text-iowan {
-  font-family: "Iowan";
+.text-courier ion-label {
+  font-family: "Courier New";
 }
 
-.text-palatino {
-  font-family: "Palatino";
+.text-lucida ion-label {
+  font-family: "Lucida Console";
 }
 
-.text-san-francisco {
-  font-family: "San Francisco";
+.text-georgia ion-label {
+  font-family: "Georgia";
 }
 
-.text-seravek {
-  font-family: "Seravek";
-}
-
-.text-times-new-roman {
+.text-times-new-roman ion-label {
   font-family: "Times New Roman";
 }
-
-
-/*-----------*/
-
-.font-container {
-  display: grid;
-  grid-template-columns: auto auto;
-}
-
-.font-button {
-  font-size: 20px;
-  color: black;
-}
-

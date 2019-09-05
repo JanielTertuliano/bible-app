@@ -49,8 +49,6 @@ export class PopoverComponent {
   background: string;
   contentEle: any;
   textEle: any;
-  fontFamily;
-
 
   colors = {
     white: {
@@ -72,13 +70,9 @@ export class PopoverComponent {
   };
 
   ngOnInit() {
-
     this.contentEle = document.getElementsByClassName('text-to-change');
     this.textEle = document.getElementsByClassName('content');
-    console.log(this.contentEle);
-    console.log(this.contentEle[0].style.backgroundColor);
     this.background = this.getColorName(this.contentEle[0].style.backgroundColor);
-
   }
 
   getColorName(background) {
@@ -95,16 +89,13 @@ export class PopoverComponent {
     return colorName;
   }
 
-  setFontFamily() {
-    if (this.textEle.style.fontFamily) {
-      this.fontFamily = this.textEle.style.fontFamily.replace(/'/g, '');
-    }
-  }
-
   changeBackground(color) {
     this.background = color;
-    this.contentEle.style.backgroundColor = this.colors[color].bg;
-    this.textEle.style.color = this.colors[color].fg;
+    this.contentEle[0].style.backgroundColor = this.colors[color].bg;
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.textEle.length; i++) {
+      this.textEle[i].style.color = this.colors[color].fg;
+    }
   }
 
   changeFontSize(direction) {
@@ -114,7 +105,10 @@ export class PopoverComponent {
     }
   }
 
-  changeFontFamily() {
-    if (this.fontFamily) { this.textEle.style.fontFamily = this.fontFamily; }
+  changeFontFamily(fontFamily) {
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.textEle.length; i++) {
+      this.textEle[i].style.fontFamily = fontFamily.replace(/'/g, '');
+    }
   }
 }

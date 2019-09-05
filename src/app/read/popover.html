@@ -28,39 +28,34 @@
                 <ion-label>Fontes</ion-label>
             </ion-list-header>
 
-            <ion-item class="text-athelas">
-                <ion-label>Athelas</ion-label>
-                <ion-radio value="Athelas"></ion-radio>
+            <ion-item class="text-arial">
+                <ion-label>Arial</ion-label>
+                <ion-radio value="Arial" (click)="changeFontFamily('Arial')"></ion-radio>
             </ion-item>
 
-            <ion-item class="text-charter">
-                <ion-label>Charter</ion-label>
-                <ion-radio value="Charter"></ion-radio>
+            <ion-item class="text-verdana">
+                <ion-label>Verdana</ion-label>
+                <ion-radio value="verdana" (click)="changeFontFamily('Verdana')"></ion-radio>
             </ion-item>
 
-            <ion-item class="text-iowan">
-                <ion-label>Iowan</ion-label>
-                <ion-radio value="Iowan"></ion-radio>
+            <ion-item class="text-courier">
+                <ion-label>Courier New</ion-label>
+                <ion-radio value="courier" (click)="changeFontFamily('Courier New')"></ion-radio>
             </ion-item>
 
-            <ion-item class="text-palatino">
-                <ion-label>Palatino</ion-label>
-                <ion-radio value="Palatino"></ion-radio>
+            <ion-item class="text-lucida">
+                <ion-label>Lucida Console</ion-label>
+                <ion-radio value="lucida" (click)="changeFontFamily('Lucida Console')"></ion-radio>
             </ion-item>
 
-            <ion-item class="text-san-francisco">
-                <ion-label>San Francisco</ion-label>
-                <ion-radio value="San Francisco"></ion-radio>
+            <ion-item class="text-georgia">
+                <ion-label>Georgia</ion-label>
+                <ion-radio value="Georgia" (click)="changeFontFamily('Georgia')"></ion-radio>
             </ion-item>
-
-            <ion-item class="text-seravek">
-                <ion-label>Seravek</ion-label>
-                <ion-radio value="Seravek"></ion-radio>
-            </ion-item>
-
+            
             <ion-item class="text-times-new-roman">
                 <ion-label>Times New Roman</ion-label>
-                <ion-radio value="Times New Roman"></ion-radio>
+                <ion-radio value="Times New Roman" (click)="changeFontFamily('Times New Roman')"></ion-radio>
             </ion-item>
 
         </ion-radio-group>
