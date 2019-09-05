@@ -4,6 +4,15 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+  <ion-button expand="block" (click)="insertChaptersBook()">
+    init
+  </ion-button>
+
+  <div style="margin-top: 50px" *ngIf="progess">
+    <ion-progress-bar type="indeterminate"></ion-progress-bar>
+    {{ log }}
+    <ion-progress-bar type="indeterminate" reversed="true"></ion-progress-bar>
+  </div>
 
 </ion-content>

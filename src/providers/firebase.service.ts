@@ -7,18 +7,27 @@ import { FirebaseApp } from '@angular/fire';
 import * as firebase from 'firebase';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class FirebaseService {
 
-  eventEmitter: any = new EventEmitter();
+    eventEmitter: any = new EventEmitter();
 
-  constructor(
-    private db: AngularFirestore,
-    public firebaseauth: AngularFireAuth,
-    private storage: AngularFireStorage,
-    private fbApp: FirebaseApp
-  ) {
-  }
+    constructor(
+        private db: AngularFirestore,
+        public firebaseauth: AngularFireAuth,
+        private storage: AngularFireStorage,
+        private fbApp: FirebaseApp
+    ) {
+    }
 
+    insertBooks(book) {
+        return this.db.collection('books').add(book);
+    }
+
+    getBooks() {
+        return this.db.collection('books', ref => ref
+        .orderBy('order', 'asc'))
+        .snapshotChanges();
+    }
 }
