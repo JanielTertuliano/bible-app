@@ -51,6 +51,6 @@ export class Tab1Page {
   }
 
   selectBook(book) {
-    this.router.navigate(['/tabs-home/tabs-reading/tab2'], { queryParams: book });
+    this.router.navigate(['/tabs-home/tabs-reading/capitulos'], { queryParams: book });
   }
 }

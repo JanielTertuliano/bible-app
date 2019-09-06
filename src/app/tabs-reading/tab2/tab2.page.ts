@@ -37,7 +37,7 @@ export class Tab2Page {
   }
 
   selectChapter(chapter) {
-    this.router.navigate(['/tabs-home/tabs-reading/tab3'], { queryParams: { abbrev: this.abbrev, chapter, title: this.title } });
+    this.router.navigate(['/tabs-home/tabs-reading/versiculos'], { queryParams: { abbrev: this.abbrev, chapter, title: this.title } });
   }
 
 }

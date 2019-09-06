@@ -29,14 +29,29 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs-home/tabs-reading',
+        redirectTo: '/tabs-home/tabs-reading/livro',
+        pathMatch: 'full'
+      },
+      {
+        path: 'livro',
+        redirectTo: '/tabs-home/tabs-reading/livro',
+        pathMatch: 'full'
+      },
+      {
+        path: 'capitulos',
+        redirectTo: '/tabs-home/tabs-reading/capitulos',
+        pathMatch: 'full'
+      },
+      {
+        path: 'versiculos',
+        redirectTo: '/tabs-home/tabs-reading/versiculos',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs-home/tabs-reading',
+    redirectTo: '/tabs-home/tabs-reading/livro',
     pathMatch: 'full'
   }
 ];
