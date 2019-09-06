@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TabsPage } from '../tabs/tabs.page';
 
 @Component({
   selector: 'app-tab2',
@@ -8,20 +9,21 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class Tab2Page {
 
-  title: string;
   arrayChapters = [];
   abbrev: string;
+  title: string;
 
   constructor(
+    private tabs: TabsPage,
     private activatedRoute: ActivatedRoute,
     private router: Router) {
     this.activatedRoute.queryParams.subscribe(params => {
       if (Object.entries(params).length === 0 && params.constructor === Object) {
-        this.title = 'ELSE';
         this.countChapters(50);
       } else {
-        this.title = params.name;
         this.abbrev = params.abbrev;
+        this.title = params.name;
+        this.tabs.setTitle(this.title);
         this.countChapters(params.chapters);
       }
     });

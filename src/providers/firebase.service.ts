@@ -30,4 +30,22 @@ export class FirebaseService {
         .orderBy('order', 'asc'))
         .snapshotChanges();
     }
+
+    getVersionBookChpter(version, book, chapter) {
+        return this.db.collection('version')
+        .doc(version)
+        .collection('book')
+        .doc(book)
+        .collection(chapter)
+        .snapshotChanges();
+    }
+
+    insertVersion(version , book, chapter, doc) {
+        return this.db.collection('version')
+        .doc(version)
+        .collection('book')
+        .doc(book)
+        .collection(chapter.toString())
+        .add(doc);
+    }
 }

@@ -9,10 +9,9 @@
     init
   </ion-button>
 
-  <div style="margin-top: 50px" *ngIf="progess">
-    <ion-progress-bar type="indeterminate"></ion-progress-bar>
-    {{ log }}
-    <ion-progress-bar type="indeterminate" reversed="true"></ion-progress-bar>
+  <div style="margin-top: 50px">
+    {{ name }} : {{ log }}%
+    <ion-progress-bar value="{{progess}}"></ion-progress-bar>
   </div>
 
 </ion-content>

@@ -1,11 +1,3 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      {{ title }}
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
   <div class="grid-container">
     <div class="grid-item" *ngFor="let i of arrayChapters" (click)="selectChapter(i)">{{ i }}</div>
