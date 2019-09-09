@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref></ion-back-button>
+    </ion-buttons>
+    <ion-title>Versões</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <h5>Use Offline</h5>
+  <ion-list>
+    <ion-item *ngFor="let item of versions">
+      <ion-label>{{ item }}</ion-label>
+      <ion-button color="primary" slot="end" fill="clear">Download</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
