@@ -12,7 +12,9 @@ import { BibleapiService } from 'src/providers/bibleapi.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FirebaseService } from 'src/providers/firebase.service';
 
-import { AngularFireModule } from 'angularfire2';
+// import { AngularFireModule } from 'angularfire2';
+import { AngularFireModule } from '@angular/fire';
+
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -27,7 +29,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     AppRoutingModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
+    AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
     AngularFireStorageModule
   ],

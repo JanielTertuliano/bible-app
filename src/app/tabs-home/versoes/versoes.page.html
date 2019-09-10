@@ -1,8 +1,5 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref></ion-back-button>
-    </ion-buttons>
     <ion-title>Versões</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,9 +7,11 @@
 <ion-content padding>
   <h5>Use Offline</h5>
   <ion-list>
-    <ion-item *ngFor="let item of versions">
-      <ion-label>{{ item }}</ion-label>
-      <ion-button color="primary" slot="end" fill="clear">Download</ion-button>
+    <ion-item *ngFor="let item of versions; let index = index">
+      <ion-label>{{ item.version }}</ion-label>
+      <ion-button color="primary" slot="end" fill="clear" (click)="downloadVersion(item, index)" *ngIf="!item.downloaded">Download</ion-button>
+      <ion-icon name="checkmark" slot="end" color="success"  *ngIf="item.downloaded"></ion-icon>
+      <ion-progress-bar value="{{progess}}"  *ngIf="item.downloading"></ion-progress-bar>
     </ion-item>
   </ion-list>
 </ion-content>

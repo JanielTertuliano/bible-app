@@ -40,6 +40,13 @@ export class FirebaseService {
         .snapshotChanges();
     }
 
+    downloadVersion(version) {
+        return this.db.collection('version')
+        .doc(version)
+        .collection('book')
+        .snapshotChanges();
+    }
+
     insertVersion(version , book, chapter, doc) {
         return this.db.collection('version')
         .doc(version)
