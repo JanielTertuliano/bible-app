@@ -9,9 +9,11 @@
   <ion-list>
     <ion-item *ngFor="let item of versions; let index = index">
       <ion-label>{{ item.version }}</ion-label>
-      <ion-button color="primary" slot="end" fill="clear" (click)="downloadVersion(item, index)" *ngIf="!item.downloaded">Download</ion-button>
+      <ion-button color="primary" slot="end" fill="clear" (click)="downloadVersion(item.version)" *ngIf="!item.downloaded">Download</ion-button>
       <ion-icon name="checkmark" slot="end" color="success"  *ngIf="item.downloaded"></ion-icon>
-      <ion-progress-bar value="{{progess}}"  *ngIf="item.downloading"></ion-progress-bar>
+    </ion-item>
+    <ion-item>
+      <ion-progress-bar value="{{progess}}"></ion-progress-bar>
     </ion-item>
   </ion-list>
 </ion-content>

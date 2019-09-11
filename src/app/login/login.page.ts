@@ -539,7 +539,7 @@ export class LoginPage implements OnInit {
       "group": "Revelações",
       "name": "Apocalipse",
       "testament": "NT"
-    }
+    } 
   ]
 
   name: string;
@@ -581,19 +581,10 @@ export class LoginPage implements OnInit {
   }
 
   insertChaptersBook() {
-    /*  const content = {
-        "abbrev": "2sm",
-        "author": "Samuel",
-        "chapters": 24,
-        "group": "Históricos",
-        "name": "2º Samuel",
-        "testament": "VT"
-      }; */
-
     this.books.forEach(content => {
       for (let i = 1; i <= content.chapters; i++) {
-        this.bibleApi.getReading('bbe', content.abbrev, i).subscribe(data => {
-          this.firebaseService.insertVersion('bbe', content.abbrev, i, data).then(res => {
+        this.bibleApi.getReading('acf', content.abbrev, i).subscribe(data => {
+          this.firebaseService.insertVersion('acf', content.abbrev, i, data).then(res => {
             this.name = content.name;
             this.log = (i / content.chapters) * 100;
             this.progess = (this.log / 100);

@@ -45,13 +45,9 @@ export class Tab3Page {
 
   getReading(abbrev, chapter) {
     this.firebaseService.getVersionBookChpter('nvi', abbrev, chapter).subscribe(data => {
-      this.contant = data.map(item => {
-        return {
-          ...item.payload.doc.data()
-        };
-      });
-      localStorage.setItem('content', JSON.stringify(this.contant[0]));
-      this.countVerses(this.contant[0].chapter.verses);
+      this.contant = data;
+      localStorage.setItem('content', JSON.stringify(this.contant));
+      this.countVerses(this.contant.chapter.verses);
     }, err => {
       console.log(err);
     });

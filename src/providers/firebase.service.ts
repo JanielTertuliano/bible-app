@@ -19,6 +19,7 @@ export class FirebaseService {
         private storage: AngularFireStorage,
         private fbApp: FirebaseApp
     ) {
+
     }
 
     insertBooks(book) {
@@ -27,32 +28,35 @@ export class FirebaseService {
 
     getBooks() {
         return this.db.collection('books', ref => ref
-        .orderBy('order', 'asc'))
-        .snapshotChanges();
+            .orderBy('order', 'asc'))
+            .snapshotChanges();
     }
 
     getVersionBookChpter(version, book, chapter) {
         return this.db.collection('version')
-        .doc(version)
-        .collection('book')
-        .doc(book)
-        .collection(chapter)
+            .doc(version)
+            .collection(book)
+            .doc(chapter)
+            .valueChanges();
+    }
+
+    getVersions() {
+        return this.db.collection('version')
         .snapshotChanges();
     }
 
-    downloadVersion(version) {
+    downloadVersion(version, book) {
         return this.db.collection('version')
         .doc(version)
-        .collection('book')
+        .collection(book.abbrev)
         .snapshotChanges();
     }
 
-    insertVersion(version , book, chapter, doc) {
+    insertVersion(version, book, chapter, doc) {
         return this.db.collection('version')
-        .doc(version)
-        .collection('book')
-        .doc(book)
-        .collection(chapter.toString())
-        .add(doc);
+            .doc(version)
+            .collection(book)
+            .doc(chapter.toString())
+            .set(doc);
     }
 }

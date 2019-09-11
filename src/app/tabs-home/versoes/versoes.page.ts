@@ -39,19 +39,9 @@ export class VersoesPage {
   progess: number = 0.0;
 
   constructor(private firebaseService: FirebaseService) {
-
   }
 
-  downloadVersion(version: any, index: number) {
-    this.firebaseService.downloadVersion(version).subscribe(data => {
-      console.log(data);
-      /*data.map(item => {
-        console.log(item);
-        return {
-          ...item.payload.doc.data()
-        };
-      });*/
-    });
+  _downloadVersion(item: any, index: number) {
 
     for (let i = 0; i <= 100; i++) {
       this.progess = i / 100;
@@ -59,4 +49,38 @@ export class VersoesPage {
     }
     this.versions[index].downloaded = true;
   }
+
+
+
+  downloadVersion(version: any) {
+    let books = [];
+
+    this.firebaseService.getBooks().subscribe(res => {
+      res.map(book => {
+        let docBook = {
+          id: book.payload.doc.id,
+          ...book.payload.doc.data()
+        };
+        this.firebaseService.downloadVersion(version, docBook).subscribe(res => {
+          res.forEach((item, index) => {
+
+            let content = {
+              id: item.payload.doc.id,
+              ...item.payload.doc.data()
+            };
+
+            this.progess += .1;
+          });
+
+        });
+      });
+    });
+  }
+
+  getVersions() {
+    this.firebaseService.getVersions().subscribe(data => {
+      console.log(data);
+    });
+  }
+
 }
