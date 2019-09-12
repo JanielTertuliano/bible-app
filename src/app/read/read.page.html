@@ -1,7 +1,10 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref></ion-back-button>
+      <!-- <ion-back-button defaultHref></ion-back-button> -->
+      <ion-button (click)="close()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-title>{{ title }} {{ chapter }}</ion-title>
     <ion-buttons slot="primary">
@@ -14,8 +17,26 @@
 
 <ion-content #popoverContent class="popover-page">
   <div #popoverText class="text-to-change">
-    <div class="content" *ngFor="let item of content.verses">
+    <div class="content" id="verse-{{item.number}}" *ngFor="let item of content.verses; let index = index" (click)="selectText(item, index)">
       <span>{{ item.number }}</span> {{ item.text }}
     </div>
   </div>
+
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed" (click)="backChapter()">
+    <ion-fab-button color="light">
+      <ion-icon name="arrow-dropleft"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button color="light">
+      <ion-icon name="expand"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="nextChapter()">
+    <ion-fab-button color="light">
+      <ion-icon name="arrow-dropright"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

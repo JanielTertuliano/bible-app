@@ -1,5 +1,7 @@
 {
   "name": "bible-app",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

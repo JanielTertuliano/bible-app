@@ -1,6 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
+import { PopoverController, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-read',
@@ -15,7 +15,8 @@ export class ReadPage implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private popoverCtrl: PopoverController) {
+    private popoverCtrl: PopoverController,
+    private modalCtrl: ModalController) {
     this.content = JSON.parse(localStorage.getItem('content'));
     this.title = this.content.book.name;
     this.chapter = this.content.chapter.number;
@@ -27,15 +28,40 @@ export class ReadPage implements OnInit {
   }
 
   ngOnInit() {
+    const modal = document.getElementsByClassName('modal-wrapper');
+    modal[0].setAttribute('style', 'height: 100%; width: 100%');
   }
 
-  async presentPopover(ev: any) {
+  async presentPopover() {
     const popover = await this.popoverCtrl.create({
       component: PopoverComponent,
-      event: ev,
+      // event: ev,
       translucent: true
     });
     return await popover.present();
+  }
+
+  selectText(item, index) {
+    const verseSelected = document.getElementById('verse-' + item.number);
+    console.log(verseSelected);
+
+    const el = verseSelected.getElementsByClassName('content selected')[0];
+
+    console.log(el);
+
+    verseSelected.classList.add('selected');
+  }
+
+  nextChapter() {
+    console.log(this.content);
+  }
+
+  backChapter() {
+    console.log(this.content);
+  }
+
+  close() {
+    this.modalCtrl.dismiss();
   }
 }
 

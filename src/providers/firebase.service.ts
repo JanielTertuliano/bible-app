@@ -32,11 +32,18 @@ export class FirebaseService {
             .snapshotChanges();
     }
 
+    getVersionBookChpterCount(version, book, chapter) {
+        return this.db.collection('version')
+            .doc(version)
+            .collection(book)
+            .snapshotChanges();
+    }
+
     getVersionBookChpter(version, book, chapter) {
         return this.db.collection('version')
             .doc(version)
             .collection(book)
-            .doc(chapter)
+            .doc(chapter.toString())
             .valueChanges();
     }
 

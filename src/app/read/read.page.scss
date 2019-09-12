@@ -16,9 +16,23 @@
   grid-template-columns: auto auto;
 }
 
+.text-to-change {
+  margin-bottom: 100px;
+  padding: 10px;
+}
+
+.selected {
+  text-decoration-line: underline
+}
+
 .font-button {
   font-size: 20px;
   color: black;
+}
+
+ion-fab-button {
+  height: 40px;
+  width: 40px;
 }
 
 .text-smaller,

@@ -10,6 +10,7 @@ import { TabsPage } from '../tabs/tabs.page';
 export class Tab2Page {
 
   arrayChapters = [];
+  content: any = {};
   abbrev: string;
   title: string;
 
@@ -18,13 +19,14 @@ export class Tab2Page {
     private activatedRoute: ActivatedRoute,
     private router: Router) {
     this.activatedRoute.queryParams.subscribe(params => {
-      if (Object.entries(params).length === 0 && params.constructor === Object) {
-        this.countChapters(50);
-      } else {
+      if (Object.entries(params).length === 0 && params.constructor === Object) { } else {
         this.abbrev = params.abbrev;
         this.title = params.name;
         this.tabs.setTitle(this.title);
         this.countChapters(params.chapters);
+        this.content.book = params;
+        this.content.chapter = { number: 1 };
+        localStorage.setItem('content', JSON.stringify(this.content));
       }
     });
   }

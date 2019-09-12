@@ -22,7 +22,7 @@ export class Tab1Page {
   }
 
   ionViewDidEnter() {
-    this.tabs.setTitle('Livro');
+    // this.tabs.setTitle('Livro');
   }
 
   getBooks() {

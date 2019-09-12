@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BibleapiService } from 'src/providers/bibleapi.service';
 import { FirebaseService } from 'src/providers/firebase.service';
 import { TabsPage } from '../tabs/tabs.page';
+import { ModalController } from '@ionic/angular';
+import { ReadPage } from './../../read/read.page';
 
 @Component({
   selector: 'app-tab3',
@@ -12,42 +14,33 @@ import { TabsPage } from '../tabs/tabs.page';
 export class Tab3Page {
 
   arrayVerses = [];
-  contant: any;
+  content: any = {};
 
   constructor(
     private tabs: TabsPage,
     private bibleApi: BibleapiService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private firebaseService: FirebaseService) {
+    private firebaseService: FirebaseService,
+    public modalController: ModalController) {
     this.activatedRoute.queryParams.subscribe(params => {
       if (Object.entries(params).length === 0 && params.constructor === Object) {
-        console.log('---');
+        this.content = JSON.parse(localStorage.getItem('content'));
+        this.tabs.setTitle(this.content.book.name + ' ' + this.content.chapter.number);
+        // this.countVerses(this.content.chapter.verses);
+        this.getReading(this.content.book.abbrev, this.content.chapter.number);
       } else {
-        console.log(params);
-        this.tabs.setTitle(params.title + ' ' +  params.chapter);
+        this.tabs.setTitle(params.title + ' ' + params.chapter);
         this.getReading(params.abbrev, params.chapter);
-        // this._getReading(params.abbrev, params.chapter);
       }
-    });
-  }
-
-  _getReading(abbrev, chapter) {
-    this.bibleApi.getReading('nvi', abbrev, chapter).subscribe(data => {
-      this.contant = data;
-      console.log( this.contant);
-      localStorage.setItem('content', JSON.stringify(this.contant));
-      this.countVerses(this.contant.chapter.verses);
-    }, err => {
-      console.log(err);
     });
   }
 
   getReading(abbrev, chapter) {
     this.firebaseService.getVersionBookChpter('nvi', abbrev, chapter).subscribe(data => {
-      this.contant = data;
-      localStorage.setItem('content', JSON.stringify(this.contant));
-      this.countVerses(this.contant.chapter.verses);
+      this.content = data;
+      localStorage.setItem('content', JSON.stringify(this.content));
+      this.countVerses(this.content.chapter.verses);
     }, err => {
       console.log(err);
     });
@@ -60,7 +53,13 @@ export class Tab3Page {
     }
   }
 
-  selectVerse(verse) {
-    this.router.navigate(['/read', verse] );
+  async selectVerse(verse) {
+
+    const modal = await this.modalController.create({
+      component: ReadPage
+    });
+    return await modal.present();
+    this.router.navigate(['/read', verse]);
   }
+
 }

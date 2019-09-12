@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabs',
@@ -9,7 +10,7 @@ export class TabsPage {
 
   title = 'Livros';
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   setTitle(title) {
     this.title = title;

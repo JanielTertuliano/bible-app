@@ -11,7 +11,7 @@ const routes: Routes = [
   //   loadChildren: () => import('./tabs-reading/tabs/tabs.module').then(m => m.TabsPageModule)
   // },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
-  { path: 'read/:verse', loadChildren: './read/read.module#ReadPageModule' }
+  // { path: 'read/:verse', loadChildren: './read/read.module#ReadPageModule' }
 ];
 @NgModule({
   imports: [
