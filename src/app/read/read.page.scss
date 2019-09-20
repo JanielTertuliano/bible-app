@@ -25,6 +25,10 @@
   text-decoration-line: underline
 }
 
+.action-sheet-group {
+  display: flex !important;
+}
+
 .font-button {
   font-size: 20px;
   color: black;
@@ -41,6 +45,7 @@ ion-fab-button {
   // border-width: $hairlines-width;
 }
 
+// propover
 ion-row,
 ion-col {
   padding: 0;

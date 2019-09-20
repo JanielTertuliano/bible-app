@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header *ngIf="!fullScreen">
   <ion-toolbar>
     <ion-buttons slot="start">
       <!-- <ion-back-button defaultHref></ion-back-button> -->
@@ -17,7 +17,7 @@
 
 <ion-content #popoverContent class="popover-page">
   <div #popoverText class="text-to-change">
-    <div class="content" id="verse-{{item.number}}" *ngFor="let item of content.verses; let index = index" (click)="selectText(item, index)">
+    <div class="content" id="verse-{{item.number}}" *ngFor="let item of content.verses; let index = index" (click)="selectText(item)">
       <span>{{ item.number }}</span> {{ item.text }}
     </div>
   </div>
@@ -28,9 +28,10 @@
     </ion-fab-button>
   </ion-fab>
 
-  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed" (click)="requestFullscreen()">
     <ion-fab-button color="light">
-      <ion-icon name="expand"></ion-icon>
+      <ion-icon name="expand" *ngIf="!fullScreen"></ion-icon>
+      <ion-icon name="contract" *ngIf="fullScreen"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
@@ -39,4 +40,5 @@
       <ion-icon name="arrow-dropright"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+  
 </ion-content>

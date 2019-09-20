@@ -18,7 +18,6 @@ export class AppComponent {
     private router: Router
   ) {
     this.initializeApp();
-    this.router.navigate(['/tabs-home/tabs-reading/livro']);
   }
 
   initializeApp() {
@@ -26,5 +25,6 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+    this.router.navigate(['/tabs-home/tabs-reading/livro']);
   }
 }

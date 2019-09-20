@@ -12,6 +12,8 @@ export class ReadPage implements OnInit {
   content: any;
   title: string;
   chapter: number;
+  fullScreen: boolean;
+  arrayVersesSelected: any = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -41,15 +43,19 @@ export class ReadPage implements OnInit {
     return await popover.present();
   }
 
-  selectText(item, index) {
+  selectText(item) {
     const verseSelected = document.getElementById('verse-' + item.number);
-    console.log(verseSelected);
-
-    const el = verseSelected.getElementsByClassName('content selected')[0];
-
-    console.log(el);
-
-    verseSelected.classList.add('selected');
+    if (this.arrayVersesSelected.includes(item)) {
+      this.arrayVersesSelected.forEach((element, index) => {
+        if (element === item) {
+          this.arrayVersesSelected.splice(index, 1);
+          verseSelected.classList.remove('selected');
+        }
+      });
+    } else {
+      this.arrayVersesSelected.push(item);
+      verseSelected.classList.add('selected');
+    }
   }
 
   nextChapter() {
@@ -58,6 +64,16 @@ export class ReadPage implements OnInit {
 
   backChapter() {
     console.log(this.content);
+  }
+
+  requestFullscreen() {
+    if (this.fullScreen) {
+      document.exitFullscreen();
+      this.fullScreen = !this.fullScreen;
+    } else {
+      document.body.requestFullscreen();
+      this.fullScreen = !this.fullScreen;
+    }
   }
 
   close() {
